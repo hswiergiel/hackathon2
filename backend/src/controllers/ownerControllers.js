@@ -83,16 +83,15 @@ const destroy = (req, res) => {
 };
 
 const login = (req, res) => {
-  const { email, password } = req.body;
-
   models.owner
-    .findOwnerByEmail(email)
+    .findOwnerByEmail(req.body.email)
     .then(([result]) => {
       if (result.length) {
-        if (result[0].password !== password) {
+        const { email, password } = result[0];
+        if (password !== req.body.password) {
           res.sendStatus(401);
         } else {
-          res.send("Log Successful");
+          res.status(201).send(email);
         }
       } else {
         res.sendStatus(404);

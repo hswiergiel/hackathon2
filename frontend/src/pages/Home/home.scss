@@ -1,0 +1,53 @@
+.home {
+  .header-home {
+    button.modalToggle,
+    input[type="submit"],
+    input[type="button"] {
+      border-radius: 15px;
+      margin-top: 2%;
+      background: linear-gradient(
+        to right,
+        #ff8200,
+        #ff7100,
+        #ff5d02,
+        #ff460c,
+        #ff2415
+      );
+      cursor: pointer;
+      padding: 0.5rem 2rem;
+      border: none;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button.modalToggle:not(:first-child) {
+      margin-left: 10px;
+    }
+
+    .formGroup {
+      margin-top: 10px;
+    }
+
+    .buttonWrapper {
+      display: flex;
+      justify-content: right;
+      margin-right: 2%;
+    }
+
+    .buttonSubscribe {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .subscribePage {
+      height: 80%;
+
+      img {
+        border-radius: 5%;
+        width: 100%;
+        height: 50%;
+      }
+    }
+  }
+}
