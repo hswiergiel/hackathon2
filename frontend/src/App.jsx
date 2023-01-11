@@ -1,5 +1,6 @@
 import "reset-css";
 import "./style.scss";
+
 import Home from "./pages/Home";
 
 function App() {

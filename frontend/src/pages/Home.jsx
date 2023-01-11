@@ -1,3 +1,5 @@
+import "./style.scss";
+import Navbar from "@components/Navbar/Navbar";
 export default function Home() {
-  return <>Prêt pour le hackathon!</>;
+  return <Navbar />;
 }
