@@ -52,9 +52,6 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const vehicle = req.body;
-
-  // TODO validations (length, format...)
-
   models.vehicle
     .insert(vehicle)
     .then(([result]) => {
