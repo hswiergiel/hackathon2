@@ -82,10 +82,29 @@ const destroy = (req, res) => {
     });
 };
 
+const verifyUser = (req, res, next) => {
+  const user = req.body;
+  models.user
+    .getbyemailandpassword(user)
+    .then(([users]) => {
+      if (users[0] !== null) {
+        [req.user] = users;
+        res.sendStatus(200);
+      } else {
+        res.sendStatus(401);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error retrieving data from database");
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  verifyUser,
 };
