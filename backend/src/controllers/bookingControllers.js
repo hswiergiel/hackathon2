@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.booking
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.user
+  models.booking
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
+  const booking = req.body;
 
   // TODO validations (length, format...)
 
-  user.id = parseInt(req.params.id, 10);
+  booking.id = parseInt(req.params.id, 10);
 
-  models.user
-    .update(user)
+  models.booking
+    .update(booking)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,14 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const booking = req.body;
 
   // TODO validations (length, format...)
 
-  models.user
-    .insert(user)
+  models.booking
+    .insert(booking)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      res.location(`/bookings/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.user
+  models.booking
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -82,30 +82,10 @@ const destroy = (req, res) => {
     });
 };
 
-const verifyUser = (req, res, next) => {
-  const user = req.body;
-  models.user
-    .getbyemailandpassword(user)
-    .then(([users]) => {
-      if (users.length) {
-        console.log(users);
-        [req.user] = users;
-        res.status(200).send(req.user);
-      } else {
-        res.sendStatus(401);
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send("Error retrieving data from database");
-    });
-};
-
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
-  verifyUser,
 };
