@@ -1,3 +1,4 @@
+import AmazonLocker from "@components/amazonLocker/AmazonLocker";
 import Home from "./pages/Home";
 
 import "./App.css";
@@ -5,8 +6,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <AmazonLocker />
     </div>
   );
 }
