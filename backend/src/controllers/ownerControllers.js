@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.owner
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.user
+  models.owner
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
+  const owner = req.body;
 
   // TODO validations (length, format...)
 
-  user.id = parseInt(req.params.id, 10);
+  owner.id = parseInt(req.params.id, 10);
 
-  models.user
-    .update(user)
+  models.owner
+    .update(owner)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,14 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const owner = req.body;
 
   // TODO validations (length, format...)
 
-  models.user
-    .insert(user)
+  models.owner
+    .insert(owner)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      res.location(`/owners/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.user
+  models.owner
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -82,10 +82,32 @@ const destroy = (req, res) => {
     });
 };
 
+const login = (req, res) => {
+  const { email, password } = req.body;
+
+  models.owner
+    .findOwnerByEmail(email)
+    .then(([result]) => {
+      if (result.length) {
+        if (result[0].password !== password) {
+          res.sendStatus(401);
+        } else {
+          res.send("Log Successful");
+        }
+      } else {
+        res.sendStatus(404);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  login,
 };

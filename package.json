@@ -18,5 +18,9 @@
   "devDependencies": {
     "concurrently": "^7.0.0",
     "husky": "^7.0.0"
+  },
+  "dependencies": {
+    "sass": "^1.57.1",
+    "scss": "^0.2.4"
   }
 }

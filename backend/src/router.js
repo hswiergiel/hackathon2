@@ -2,17 +2,18 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
 const userControllers = require("./controllers/userControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
-
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+const bookingControllers = require("./controllers/bookingControllers");
+const ownerControllers = require("./controllers/ownerControllers");
 
 router.get("/users", userControllers.browse);
 
 router.get("/vehicles", vehicleControllers.browse);
+
+router.get("/booking", bookingControllers.browse);
+router.post("/booking", bookingControllers.add);
+
+router.post("/loginowner", ownerControllers.login);
+router.get("/owners", ownerControllers.browse);
 module.exports = router;
