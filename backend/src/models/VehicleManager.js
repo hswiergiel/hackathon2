@@ -20,7 +20,7 @@ class vehicleManager extends AbstractManager {
     );
   }
 
-  //a modifier si besoin
+  // a modifier si besoin
   update(vehicle) {
     return this.connection.query(
       `update ${this.table} set title = ? where id = ?`,

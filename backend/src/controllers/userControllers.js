@@ -82,13 +82,12 @@ const destroy = (req, res) => {
     });
 };
 
-const verifyUser = (req, res, next) => {
+const verifyUser = (req, res) => {
   const user = req.body;
   models.user
     .getbyemailandpassword(user)
     .then(([users]) => {
       if (users.length) {
-        console.log(users);
         [req.user] = users;
         res.status(200).send(req.user);
       } else {
