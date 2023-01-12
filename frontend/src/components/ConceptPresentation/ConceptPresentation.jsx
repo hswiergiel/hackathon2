@@ -6,6 +6,7 @@ import Wheel from "../../assets/wheel.svg";
 import Carpooling from "../../assets/carpool.svg";
 import Chrono from "../../assets/clock.svg";
 import Money from "../../assets/money.png";
+import Carpool from "../../assets/carpooling.png";
 
 export default function ConceptPresentation() {
   return (
@@ -92,6 +93,25 @@ export default function ConceptPresentation() {
               Read more
             </button>
           </p>
+        </div>
+      </div>
+      <div className="carpoolOption">
+        <div className="textCarpoolContainer">
+          <h3 className="hookCarpoolOption">
+            Opt for <em className="green">carpooling</em> !
+          </h3>
+          <p className="textCarpoolOption">
+            Would you like to save money by sharing the rental costs ? Select
+            the carpooling option when booking. Other users will be notified
+            when your vehicle is available for a shared journey.
+            <br />
+            <button className="btnCarpoolOption" type="button">
+              Read more
+            </button>
+          </p>
+        </div>
+        <div className="imgCarpoolContainer">
+          <img className="imgCarpoolOption" src={Carpool} alt="Carpool" />
         </div>
       </div>
     </div>
