@@ -87,6 +87,10 @@ export default function ConceptPresentation() {
             loyalty programme. <br />
             The more eco-friendly you drive, the more points you earn !<br />
             With these points you can benefit from attractive discounts.
+            <br />
+            <button className="btnFidelityProgramm" type="button">
+              Read more
+            </button>
           </p>
         </div>
       </div>

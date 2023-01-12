@@ -213,3 +213,21 @@ em {
   line-height: 3rem;
   margin-left: 10rem;
 }
+.btnFidelityProgramm {
+  border-radius: 10%;
+  height: 5rem;
+  width: 15rem;
+  background: rgb(130, 235, 187);
+  background: linear-gradient(
+    90deg,
+    rgba(130, 235, 187, 1) 0%,
+    rgba(117, 238, 204, 1) 50%,
+    rgba(219, 214, 73, 1) 100%
+  );
+  margin-top: 1.5rem;
+  font-weight: bold;
+  font-family: "Lexend", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
