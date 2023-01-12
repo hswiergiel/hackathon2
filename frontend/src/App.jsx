@@ -13,22 +13,17 @@ function App() {
     <LogContextProvider>
       <Router>
         <Navbar />
-
-<div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/user-page" element={<UserPage />} />
-          <Route path="/renter-page" element={<RenterPage />} />
-          <Route path="/adminlogin-page" element={<Admin />} />
-          <Route path="/adminpage" element={<Adminpagex />} />
-        </Routes>
-      </div>
-    </Router>
-
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/user-page" element={<UserPage />} />
+            <Route path="/renter-page" element={<RenterPage />} />
+            <Route path="/adminlogin-page" element={<Admin />} />
+            <Route path="/adminpage" element={<Adminpagex />} />
+          </Routes>
         </div>
       </Router>
     </LogContextProvider>
-
   );
 }
 
