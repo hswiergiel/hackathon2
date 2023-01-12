@@ -1,0 +1,60 @@
+.formad {
+  margin-left: 25%;
+  width: 50%;
+  // margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.titleadm {
+  margin-top: 0rem;
+  margin-left: 2em;
+  background-image: linear-gradient(
+    45deg,
+    rgb(240, 231, 185) 26.8%,
+    #a9f1e1 64%
+  );
+}
+.formlog {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+input[type="textad"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+input[type="submit"] {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="submitad"]:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-top: 8px;
+}
+.sectionadmin {
+  padding-top: 20vh;
+  height: 100vh;
+  background-image: linear-gradient(
+    45deg,
+    rgb(240, 231, 185) 26.8%,
+    #a9f1e1 64%
+  );
+  margin-bottom: 0;
+}
