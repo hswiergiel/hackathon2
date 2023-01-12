@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./rentForm.scss";
 
 export default function RentForm() {
@@ -60,7 +61,9 @@ export default function RentForm() {
           />
           <br />
           <div className="buttonContainer">
-            <button type="submit">Search</button>
+            <NavLink to="/user-page" className="nav-links">
+              <button type="submit">Search</button>
+            </NavLink>
           </div>
         </form>
       </div>
@@ -92,7 +95,9 @@ export default function RentForm() {
           />
           <br />
           <div className="buttonContainer">
-            <button type="submit">Drop off my car</button>
+            <NavLink to="/rent-page" className="nav-links">
+              <button type="submit">Drop off my car</button>
+            </NavLink>
           </div>
         </form>
       </div>
