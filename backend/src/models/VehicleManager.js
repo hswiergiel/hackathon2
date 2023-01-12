@@ -37,6 +37,26 @@ class vehicleManager extends AbstractManager {
       ]
     );
   }
+
+  jenAiBesoin(id) {
+    return this.connection.query(
+      `SELECT ${this.table}.owner_id FROM ${this.table} left join owner on owner.id=${this.table}.owner_id where ${this.table}.id= ?`,
+      [id]
+    );
+  }
+
+  getInfosCars() {
+    return this.connection.query(
+      `select ${this.table}.*, carpooling from ${this.table} left join booking on ${this.table}.id=vehicle_id order by carpooling desc`
+    );
+  }
+
+  updateAvailable(vehicle) {
+    return this.connection.query(
+      `update ${this.table} set is_available = ? where id = ?`,
+      [vehicle.is_available, vehicle.id]
+    );
+  }
 }
 
 module.exports = vehicleManager;

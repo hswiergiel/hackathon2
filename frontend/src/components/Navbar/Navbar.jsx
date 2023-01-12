@@ -3,17 +3,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useState, useContext } from "react";
-import LogContext from "../../contexts/LogContext";
 import useModal from "../useModal/useModal";
 import Modal from "../Modal/Modal";
 import "react-toastify/dist/ReactToastify.css";
+import LogContext from "../../contexts/LogContext";
 import "./style.scss";
 
 export default function navbar() {
   const { isShowing: isLoginFromShowed, toggle: toggleLoginForm } = useModal();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const { loggedIn, setLoggedIn } = useContext(LogContext);
+  const { loggedIn, setLoggedIn, setCurrentUser } = useContext(LogContext);
 
   const hLoginChange = (evt) => {
     setLoginForm({ ...loginForm, [evt.target.name]: evt.target.value });
@@ -23,12 +23,38 @@ export default function navbar() {
 
   const navigate = useNavigate();
 
+  const hUserLogin = (evt) => {
+    evt.preventDefault();
+    axios
+      .post("http://localhost:5000/loginuser", loginForm)
+      .then((res) => {
+        setLoggedIn(true);
+        toggleLoginForm();
+        setCurrentUser(res.data);
+        if (res.status === 201) {
+          navigate("/user-page");
+          // implementer la diff entre admin et owner
+        }
+      })
+      .catch((err) => {
+        const { status } = err.response;
+        if (status === 404) {
+          notify("Wrong email !!!");
+        } else if (status === 401) {
+          notify("Wrong password !!!");
+        }
+        console.error(err);
+      });
+  };
+
   const hOwnerLogin = (evt) => {
     evt.preventDefault();
     axios
       .post("http://localhost:5000/loginowner", loginForm)
       .then((res) => {
         setLoggedIn(true);
+        toggleLoginForm();
+        setCurrentUser(res.data);
         if (res.status === 201) {
           navigate("/renter-page");
           // implementer la diff entre admin et owner
@@ -73,7 +99,7 @@ export default function navbar() {
 
       <Modal isShowing={isLoginFromShowed} hide={toggleLoginForm} title="Login">
         <ToastContainer />
-        <form onSubmit={hOwnerLogin}>
+        <form onSubmit={hUserLogin}>
           <div className="formGroup">
             <input
               name="email"
@@ -106,7 +132,7 @@ export default function navbar() {
             />
           </div>
           <div className="formGroup">
-            <input type="submit" value="Login as User" />
+            <input type="submit" value="Login as User" onSubmit={hUserLogin} />
           </div>
         </form>
       </Modal>
