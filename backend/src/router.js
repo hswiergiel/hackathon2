@@ -8,7 +8,7 @@ const bookingControllers = require("./controllers/bookingControllers");
 const ownerControllers = require("./controllers/ownerControllers");
 
 router.get("/users", userControllers.browse);
-router.post("/loginuser", userControllers.verifyUser);
+router.post("/loginuser", userControllers.login);
 
 router.get("/vehicles", vehicleControllers.browse);
 router.post("/vehicles", vehicleControllers.add);
