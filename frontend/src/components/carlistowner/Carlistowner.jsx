@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import logogreen from "@assets/logogreencar.jpg";
+import LogContext from "../../contexts/LogContext";
 import "./carlistowner.scss";
 
 export default function Carlist() {
   const [cars, setCars] = useState();
+  const { user } = useContext(LogContext);
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles/`)
       .then(({ data }) => {
-        setCars(data);
+        const carsowner = [...data];
+        setCars(carsowner.filter((elt) => elt.owner_id === user[0].id));
       });
   }, []);
 
