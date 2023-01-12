@@ -17,10 +17,13 @@ import Modal from "../Modal/Modal";
 import LogContext from "../../contexts/LogContext";
 
 export default function ConceptPresentation() {
-  const { isShowing: isLoginFromShowed, toggle: toggleLoginForm } = useModal();
+  const { isShowing: isLoginOwnerFormShowed, toggle: toggleLoginOwnerForm } =
+    useModal();
+  const { isShowing: isLoginUserFormShowed, toggle: toggleLoginUserForm } =
+    useModal();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const { setLoggedIn } = useContext(LogContext);
+  const { setLoggedIn, setUser } = useContext(LogContext);
 
   const hLoginChange = (evt) => {
     setLoginForm({ ...loginForm, [evt.target.name]: evt.target.value });
@@ -36,6 +39,7 @@ export default function ConceptPresentation() {
       .post("http://localhost:5000/loginowner", loginForm)
       .then((res) => {
         setLoggedIn(true);
+        setUser(res.data);
         if (res.status === 201) {
           navigate("/renter-page");
           // implementer la diff entre admin et owner
@@ -112,7 +116,7 @@ export default function ConceptPresentation() {
           <button
             className="btnCompany"
             type="button"
-            onClick={toggleLoginForm}
+            onClick={toggleLoginOwnerForm}
           >
             Login as company
           </button>
@@ -147,7 +151,11 @@ export default function ConceptPresentation() {
           </div>
         </div>
         <div className="buttonUser">
-          <button className="btnUser" type="button" onClick={toggleLoginForm}>
+          <button
+            className="btnUser"
+            type="button"
+            onClick={toggleLoginUserForm}
+          >
             Login as user
           </button>
         </div>
@@ -218,9 +226,13 @@ export default function ConceptPresentation() {
           </div>
         </div>
       </div>
-      <Modal isShowing={isLoginFromShowed} hide={toggleLoginForm} title="Login">
+      <Modal
+        isShowing={isLoginOwnerFormShowed}
+        hide={toggleLoginOwnerForm}
+        title="Login"
+      >
         <ToastContainer />
-        <form onSubmit={hUserLogin}>
+        <form onSubmit={hOwnerLogin}>
           <div className="formGroup">
             <input
               name="email"
@@ -251,6 +263,39 @@ export default function ConceptPresentation() {
               value="Login as Owner"
               onSubmit={hOwnerLogin}
             />
+          </div>
+        </form>
+      </Modal>
+      <Modal
+        isShowing={isLoginUserFormShowed}
+        hide={toggleLoginUserForm}
+        title="Login"
+      >
+        <ToastContainer />
+        <form onSubmit={hUserLogin}>
+          <div className="formGroup">
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              onChange={hLoginChange}
+              value={loginForm.email}
+            />
+          </div>
+          <div className="formGroup">
+            <input
+              name="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              onChange={hLoginChange}
+              value={loginForm.password}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
           </div>
           <div className="formGroup">
             <input type="submit" value="Login as User" onSubmit={hUserLogin} />
