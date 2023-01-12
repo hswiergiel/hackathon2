@@ -1,6 +1,5 @@
 import Navbar from "@components/Navbar/Navbar";
 import RentForm from "@components/RentForm/RentForm";
-import AmazonLocker from "@components/amazonLocker/AmazonLocker";
 import "./home.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -46,22 +45,9 @@ export default function Home() {
     <div className="home">
       <Navbar />
       <RentForm />
-      <AmazonLocker />
+
       <ToastContainer />
       <header className="header-home">
-        <button
-          type="button"
-          className="modalToggle"
-          onClick={(evt) => {
-            evt.preventDefault();
-          }}
-        >
-          Register
-        </button>
-        <button type="button" className="modalToggle" onClick={toggleLoginForm}>
-          Login
-        </button>
-
         <Modal
           isShowing={isLoginFromShowed}
           hide={toggleLoginForm}
