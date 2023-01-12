@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AmazonLocker from "@components/amazonLocker/AmazonLocker";
 import Navbar from "@components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import UserPage from "./pages/UserPage/UserPage";

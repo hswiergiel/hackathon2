@@ -1,4 +1,3 @@
-import Navbar from "@components/Navbar/Navbar";
 import RentForm from "@components/RentForm/RentForm";
 import "./home.scss";
 import { useState } from "react";
@@ -44,10 +43,8 @@ export default function Home() {
   };
   return (
     <>
-      <Navbar />
       <RentForm />
       <ConceptPresentation />
-      <AmazonLocker />
       <div className="home">
         <ToastContainer />
         <header className="header-home">
@@ -112,54 +109,55 @@ export default function Home() {
           </Modal>
         </header>
       </div>
+
+      <div className="home">
+        <RentForm />
+        <ToastContainer />
+        <header className="header-home">
+          <Modal
+            isShowing={isLoginFromShowed}
+            hide={toggleLoginForm}
+            title="Login"
+          >
+            <form onSubmit={hOwnerLogin}>
+              <div className="formGroup">
+                <input
+                  name="email"
+                  type="text"
+                  placeholder="Email"
+                  onChange={hLoginChange}
+                  value={loginForm.email}
+                />
+              </div>
+              <div className="formGroup">
+                <input
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  onChange={hLoginChange}
+                  value={loginForm.password}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+              <div className="formGroup">
+                <input
+                  type="submit"
+                  value="Login as Owner"
+                  onSubmit={hOwnerLogin}
+                />
+              </div>
+              <div className="formGroup">
+                <input type="submit" value="Login as User" />
+              </div>
+            </form>
+          </Modal>
+        </header>
+      </div>
     </>
-    <div className="home">
-      <RentForm />
-      <ToastContainer />
-      <header className="header-home">
-        <Modal
-          isShowing={isLoginFromShowed}
-          hide={toggleLoginForm}
-          title="Login"
-        >
-          <form onSubmit={hOwnerLogin}>
-            <div className="formGroup">
-              <input
-                name="email"
-                type="text"
-                placeholder="Email"
-                onChange={hLoginChange}
-                value={loginForm.email}
-              />
-            </div>
-            <div className="formGroup">
-              <input
-                name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                onChange={hLoginChange}
-                value={loginForm.password}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? "Hide" : "Show"}
-              </button>
-            </div>
-            <div className="formGroup">
-              <input
-                type="submit"
-                value="Login as Owner"
-                onSubmit={hOwnerLogin}
-              />
-            </div>
-            <div className="formGroup">
-              <input type="submit" value="Login as User" />
-            </div>
-          </form>
-        </Modal>
-      </header>
-    </div>
   );
 }
