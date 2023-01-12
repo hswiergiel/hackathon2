@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./rentForm.scss";
 
 export default function RentForm() {
@@ -9,9 +10,10 @@ export default function RentForm() {
   });
 
   const [formRentOut, setFormRentOut] = useState({
-    brand: "",
     model: "",
     year: "",
+    price: "",
+    kilometer: "",
   });
 
   const hChangeRent = (evt) =>
@@ -60,7 +62,9 @@ export default function RentForm() {
           />
           <br />
           <div className="buttonContainer">
-            <button type="submit">Search</button>
+            <NavLink to="/user-page" className="nav-links">
+              <button type="submit">Search</button>
+            </NavLink>
           </div>
         </form>
       </div>
@@ -68,19 +72,19 @@ export default function RentForm() {
         <h2>Rent out your own car in a few clicks !</h2>
         <form onSubmit={hSubmit}>
           <input
-            name="brand"
-            type="text"
-            placeholder="Which brand ?"
-            onChange={hChangeRentOut}
-            value={formRentOut.brand}
-          />
-          <br />
-          <input
             name="model"
             type="text"
             placeholder="Which model ?"
             onChange={hChangeRentOut}
             value={formRentOut.model}
+          />
+          <br />
+          <input
+            name="price"
+            type="number"
+            placeholder="price ?"
+            onChange={hChangeRentOut}
+            value={formRentOut.price}
           />
           <br />
           <input
@@ -91,8 +95,18 @@ export default function RentForm() {
             value={formRentOut.year}
           />
           <br />
+          <input
+            name="kilometer"
+            type="number"
+            placeholder="Kilometer ?"
+            onChange={hChangeRentOut}
+            value={formRentOut.kilometer}
+          />
+          <br />
           <div className="buttonContainer">
-            <button type="submit">Drop off my car</button>
+            <NavLink to="/renter-page" className="nav-links">
+              <button type="submit">Drop off my car</button>
+            </NavLink>
           </div>
         </form>
       </div>
