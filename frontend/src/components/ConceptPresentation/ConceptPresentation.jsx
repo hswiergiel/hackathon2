@@ -7,6 +7,7 @@ import Carpooling from "../../assets/carpool.svg";
 import Chrono from "../../assets/clock.svg";
 import Money from "../../assets/money.png";
 import Carpool from "../../assets/carpooling.png";
+import Locker from "../../assets/locker.png";
 
 export default function ConceptPresentation() {
   return (
@@ -44,6 +45,11 @@ export default function ConceptPresentation() {
           />
         </div>
       </div>
+      <div className="buttonCompany">
+        <button className="btnCompany" type="button">
+          Login as company
+        </button>
+      </div>
       <h2 className="titleUserContainer">As an individual ⬇</h2>
       <div className="userContainer">
         <div className="userBloc1">
@@ -72,6 +78,11 @@ export default function ConceptPresentation() {
           </p>
           <img className="imgUserBloc3" src={Chrono} alt="Chrono" />
         </div>
+      </div>
+      <div className="buttonUser">
+        <button className="btnUser" type="button">
+          Login as user
+        </button>
       </div>
       <h2 className="titleFidelityProgramm">Our loyalty programm ⬇</h2>
       <div className="fidelityProgramm">
@@ -112,6 +123,31 @@ export default function ConceptPresentation() {
         </div>
         <div className="imgCarpoolContainer">
           <img className="imgCarpoolOption" src={Carpool} alt="Carpool" />
+        </div>
+      </div>
+      <div className="amazonLocker">
+        <div className="imgLockerContainer">
+          <img className="imgAmazonLocker" src={Locker} alt="Locker" />
+        </div>
+        <div className="textLockerContainer">
+          <h3 className="hookAmazonLocker">
+            Use <em className="orange">Amazon Locker</em> for pick up & drop off
+            your vehicle quickly !
+          </h3>
+          <p className="textAmazonLocker">
+            Choose the "return than amazon locker" option for drop your car off
+            vicinity at the Amazon Locker of your choice and leave the keys in a
+            locker.
+            <br /> You'll save time and freedom it's without extra charge for
+            you.
+            <br />
+            Yes, as a member of the Ekoko family, you have our support, you
+            deserve it.
+            <br />
+            <button className="btnAmazonLocker" type="button">
+              Read more
+            </button>
+          </p>
         </div>
       </div>
     </div>
