@@ -13,7 +13,8 @@ export default function navbar() {
   const { isShowing: isLoginFromShowed, toggle: toggleLoginForm } = useModal();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const { loggedIn, setLoggedIn } = useContext(LogContext);
+  const { loggedIn, setLoggedIn, setHidden, setHidden2 } =
+    useContext(LogContext);
 
   const hLoginChange = (evt) => {
     setLoginForm({ ...loginForm, [evt.target.name]: evt.target.value });
@@ -48,11 +49,15 @@ export default function navbar() {
   const hLogOut = (evt) => {
     evt.preventDefault();
     setLoggedIn(false);
+    setHidden("");
+    setHidden2("");
     navigate("/");
   };
   return (
     <div className="navbar">
-      <img className="Logo" src={logo} alt="" />
+      <NavLink to="/" className="nav-links">
+        <img className="Logo" src={logo} alt="" />
+      </NavLink>
       <NavLink to="/" className="nav-links">
         <button className="button-51" type="button">
           Rent a vehicle
