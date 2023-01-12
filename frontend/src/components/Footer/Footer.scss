@@ -1,0 +1,44 @@
+.rectangle {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 25vh;
+  padding: none;
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(255, 249, 34),
+    rgba(255, 0, 128),
+    rgba(56, 2, 155, 0)
+  );
+  border-image-slice: 1;
+  margin-top: 3rem;
+
+  .services {
+    height: 40px;
+    font-family: "Lexend";
+    font-weight: 200;
+    font-size: 20px;
+    line-height: 40px;
+    color: #000000;
+    margin-top: 3rem;
+
+    .txtFoot {
+      display: flex;
+
+      justify-content: space-around;
+      list-style: none;
+    }
+  }
+  .mentionsLeg {
+    font-family: "Lexend";
+    font-style: normal;
+    font-size: smaller;
+    list-style-type: none;
+    margin-top: 2rem;
+
+    .utilisation {
+      list-style-type: none;
+    }
+  }
+}
