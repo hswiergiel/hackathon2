@@ -10,18 +10,15 @@ export default LogContext;
 export function LogContextProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [cars, setCars] = useState();
-  const [user, setUser] = useState({
-    id: null,
-    email: null,
-  });
+  const [currentUser, setCurrentUser] = useState({});
   const [hidden, setHidden] = useState("");
   const [hidden2, setHidden2] = useState("");
   const context = useMemo(
     () => ({
       loggedIn,
+      currentUser,
       setLoggedIn,
-      user,
-      setUser,
+      setCurrentUser,
       cars,
       setCars,
       hidden,
@@ -31,9 +28,9 @@ export function LogContextProvider({ children }) {
     }),
     [
       loggedIn,
+      currentUser,
+      setCurrentUser,
       setLoggedIn,
-      user,
-      setUser,
       cars,
       setCars,
       hidden,

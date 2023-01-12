@@ -52,13 +52,14 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const booking = req.body;
+  booking.vehicle_owner_id = req.params.owner;
 
   // TODO validations (length, format...)
 
   models.booking
     .insert(booking)
-    .then(([result]) => {
-      res.location(`/bookings/${result.insertId}`).sendStatus(201);
+    .then((result) => {
+      res.status(201).send(result);
     })
     .catch((err) => {
       console.error(err);
@@ -82,10 +83,24 @@ const destroy = (req, res) => {
     });
 };
 
+const updateCovoit = (req, res) => {
+  const { id } = parseInt(req.params.id, 10);
+
+  models.booking
+    .covoit(req.body.carpooling, id)
+    .then(([result]) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  updateCovoit,
 };

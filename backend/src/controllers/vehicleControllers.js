@@ -12,6 +12,18 @@ const browse = (req, res) => {
     });
 };
 
+const browsePool = (req, res) => {
+  models.vehicle
+    .getInfosCars()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.vehicle
     .find(req.params.id)
@@ -33,6 +45,24 @@ const edit = (req, res) => {
   vehicle.id = parseInt(req.params.id, 10);
   models.vehicle
     .update(vehicle)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const editAvailable = (req, res) => {
+  const vehicle = req.body;
+  vehicle.id = parseInt(req.params.id, 10);
+  models.vehicle
+    .updateAvailable(vehicle)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -75,10 +105,30 @@ const destroy = (req, res) => {
     });
 };
 
+const getOwnerId = (req, res) => {
+  models.vehicle
+    .jenAiBesoin(req.params.id)
+    .then(([result]) => {
+      const ownerId = result[0];
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.status(201).send(ownerId);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   edit,
   add,
   destroy,
+  getOwnerId,
+  browsePool,
+  editAvailable,
 };

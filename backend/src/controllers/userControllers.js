@@ -87,11 +87,11 @@ const login = (req, res) => {
     .findUserByEmail(req.body.email)
     .then(([result]) => {
       if (result.length) {
-        const { password } = result[0];
-        if (password !== req.body.password) {
+        const user = result[0];
+        if (user.password !== req.body.password) {
           res.sendStatus(401);
         } else {
-          res.status(201).send(result);
+          res.status(201).send(user);
         }
       } else {
         res.sendStatus(404);
