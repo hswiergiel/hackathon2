@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30vh;
+  height: 35vh;
   width: 25vw;
   border: 2px solid black;
   border-radius: 10px;
@@ -39,13 +39,14 @@
 .titleCompanyBloc1,
 .titleCompanyBloc2,
 .titleCompanyBloc3 {
+  margin-top: 0;
   background-color: transparent;
   font-weight: bold;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 9vh;
+  height: 10vh;
   width: 25vw;
   border-radius: 10px 10px 0 0;
   text-align: center;
@@ -106,7 +107,7 @@ em {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30vh;
+  height: 35vh;
   width: 25vw;
   border: 2px solid black;
   border-radius: 10px;
@@ -124,8 +125,9 @@ em {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 8vh;
+  height: 10vh;
   width: 25vw;
+  margin-top: 0;
   border-radius: 10px 10px 0 0;
   text-align: center;
   font-size: 1.3rem;
