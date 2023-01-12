@@ -1,4 +1,3 @@
-import Navbar from "@components/Navbar/Navbar";
 import RentForm from "@components/RentForm/RentForm";
 import "./home.scss";
 import { useState } from "react";
@@ -43,9 +42,7 @@ export default function Home() {
   };
   return (
     <div className="home">
-      <Navbar />
       <RentForm />
-
       <ToastContainer />
       <header className="header-home">
         <Modal
