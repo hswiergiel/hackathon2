@@ -20,7 +20,7 @@ export default function CarFleetForm() {
   };
 
   return (
-    <div className="rentOutCarContainer">
+    <div className="rentOutContainer">
       <h2>Rent out your own car in a few clicks !</h2>
       <form onSubmit={hSubmit}>
         <input
@@ -39,16 +39,15 @@ export default function CarFleetForm() {
           value={formRentOut.year}
         />
         <br />
-        <div className="eco">
-          Is eco ?
-          <input
-            name="eco"
-            type="checkbox"
-            placeholder="is eco ?"
-            onChange={hChangeRentOut}
-            value={formRentOut.year}
-          />
-        </div>
+        <div className="selectTitle">Is your vehicle eco-friendly ?</div>
+        <select name="eco" className="selectYesNo">
+          <option value={formRentOut.eco} onChange={hChangeRentOut}>
+            No
+          </option>
+          <option value={formRentOut.eco} onChange={hChangeRentOut}>
+            Yes
+          </option>
+        </select>
         <br />
         <input
           name="kilometer"

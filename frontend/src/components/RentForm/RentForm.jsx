@@ -9,9 +9,10 @@ export default function RentForm() {
   });
 
   const [formRentOut, setFormRentOut] = useState({
-    brand: "",
     model: "",
     year: "",
+    price: "",
+    kilometer: "",
   });
 
   const hChangeRent = (evt) =>
@@ -68,14 +69,6 @@ export default function RentForm() {
         <h2>Rent out your own car in a few clicks !</h2>
         <form onSubmit={hSubmit}>
           <input
-            name="brand"
-            type="text"
-            placeholder="Which brand ?"
-            onChange={hChangeRentOut}
-            value={formRentOut.brand}
-          />
-          <br />
-          <input
             name="model"
             type="text"
             placeholder="Which model ?"
@@ -84,11 +77,27 @@ export default function RentForm() {
           />
           <br />
           <input
+            name="price"
+            type="number"
+            placeholder="price ?"
+            onChange={hChangeRentOut}
+            value={formRentOut.price}
+          />
+          <br />
+          <input
             name="year"
             type="number"
             placeholder="Year ?"
             onChange={hChangeRentOut}
             value={formRentOut.year}
+          />
+          <br />
+          <input
+            name="kilometer"
+            type="number"
+            placeholder="Kilometer ?"
+            onChange={hChangeRentOut}
+            value={formRentOut.kilometer}
           />
           <br />
           <div className="buttonContainer">
