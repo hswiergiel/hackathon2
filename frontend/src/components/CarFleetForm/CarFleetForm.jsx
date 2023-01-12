@@ -11,7 +11,8 @@ export default function CarFleetForm() {
     is_eco: false,
     kilometer: "",
     is_available: 1,
-    owner_id: 3,
+    imageurl: "",
+    owner_id: 2,
   });
 
   const hChangeRentOut = (evt) =>
@@ -85,6 +86,14 @@ export default function CarFleetForm() {
           placeholder="Kilometer ?"
           onChange={hChangeRentOut}
           value={formRentOut.kilometer}
+        />
+        <br />
+        <input
+          name="imageurl"
+          type="url"
+          placeholder="Put the url of the picture of your vehicule"
+          onChange={hChangeRentOut}
+          value={formRentOut.imageurl}
         />
         <br />
         <div className="buttonContainer">
