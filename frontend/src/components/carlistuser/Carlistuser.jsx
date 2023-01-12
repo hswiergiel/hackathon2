@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import logogreen from "@assets/logogreencar.jpg";
 import logocovoit from "@assets/logocovoit.png";
-import "./carlist.scss";
+import "./carlistuser.scss";
 
-export default function Carlist() {
+export default function Carlistuser() {
   const [cars, setCars] = useState();
   useEffect(() => {
     axios
@@ -18,7 +18,9 @@ export default function Carlist() {
       {cars &&
         cars.map((car) => {
           return (
-            <div className={car.is_eco ? "carcard green" : "carcard nogreen"}>
+            <div
+              className={car.is_eco ? "carcard greencar" : "carcard nogreencar"}
+            >
               <div className="carcardinside">
                 <div className="carimginfo">
                   <img

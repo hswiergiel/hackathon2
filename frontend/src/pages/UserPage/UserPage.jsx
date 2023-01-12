@@ -1,10 +1,10 @@
 import AmazonLocker from "@components/amazonLocker/AmazonLocker";
-import Carlist from "@components/carlist/Carlist";
+import Carlistuser from "@components/carlistuser/Carlistuser";
 
 export default function Home() {
   return (
     <>
-      <Carlist />
+      <Carlistuser />
       <AmazonLocker />
     </>
   );
