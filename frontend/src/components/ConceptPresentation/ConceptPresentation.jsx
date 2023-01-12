@@ -1,4 +1,5 @@
 import "./style.scss";
+import { NavLink } from "react-router-dom";
 import GreenEnergy from "../../assets/greenenergy.svg";
 import Loupe from "../../assets/loupe.svg";
 import Car from "../../assets/car.svg";
@@ -46,9 +47,11 @@ export default function ConceptPresentation() {
         </div>
       </div>
       <div className="buttonCompany">
-        <button className="btnCompany" type="button">
-          Login as company
-        </button>
+        <NavLink to="/renter-page">
+          <button className="btnCompany" type="button">
+            Login as company
+          </button>
+        </NavLink>
       </div>
       <h2 className="titleUserContainer">As an individual ⬇</h2>
       <div className="userContainer">
@@ -80,9 +83,11 @@ export default function ConceptPresentation() {
         </div>
       </div>
       <div className="buttonUser">
-        <button className="btnUser" type="button">
-          Login as user
-        </button>
+        <NavLink to="/user-page">
+          <button className="btnUser" type="button">
+            Login as user
+          </button>
+        </NavLink>
       </div>
       <h2 className="titleFidelityProgramm">Our loyalty programm ⬇</h2>
       <div className="fidelityProgramm">
