@@ -1,3 +1,5 @@
+import ConceptPresentation from "@components/ConceptPresentation/ConceptPresentation";
+
 export default function Home() {
-  return <>Prêt pour le hackathon!</>;
+  return <ConceptPresentation />;
 }
