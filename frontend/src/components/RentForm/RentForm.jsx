@@ -104,7 +104,7 @@ export default function RentForm() {
           />
           <br />
           <div className="buttonContainer">
-            <NavLink to="/rent-page" className="nav-links">
+            <NavLink to="/renter-page" className="nav-links">
               <button type="submit">Drop off my car</button>
             </NavLink>
           </div>

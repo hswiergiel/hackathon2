@@ -1,13 +1,16 @@
 import logo from "@assets/Logococo.png";
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
 export default function navbar() {
   return (
     <div className="navbar">
       <img className="Logo" src={logo} alt="" />
-      <button className="button-51" type="button">
-        Rent a vehicle
-      </button>
+      <NavLink to="/" className="nav-links">
+        <button className="button-51" type="button">
+          Rent a vehicle
+        </button>
+      </NavLink>
       <button className="button-51" type="button">
         Register
       </button>
