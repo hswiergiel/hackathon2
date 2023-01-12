@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AmazonLocker from "@components/amazonLocker/AmazonLocker";
-import Home from "./pages/Home/Home";
 
 import Home from "./pages/Home/Home";
 import UserPage from "./pages/UserPage/UserPage";
