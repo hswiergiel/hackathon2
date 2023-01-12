@@ -20,11 +20,19 @@ class vehicleManager extends AbstractManager {
     );
   }
 
-  // a modifier si besoin
   update(vehicle) {
     return this.connection.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [vehicle.title, vehicle.id]
+      `update ${this.table} set kilometer = ?, type=?, price_per_day=?, model=?, is_eco=?, is_available=?, owner_id=? where id = ?`,
+      [
+        vehicle.kilometer,
+        vehicle.type,
+        vehicle.price_per_day,
+        vehicle.model,
+        vehicle.is_eco,
+        vehicle.is_available,
+        vehicle.owner_id,
+        vehicle.id,
+      ]
     );
   }
 }

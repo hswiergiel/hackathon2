@@ -12,6 +12,7 @@ router.post("/loginuser", userControllers.verifyUser);
 
 router.get("/vehicles", vehicleControllers.browse);
 router.post("/vehicles", vehicleControllers.add);
+router.put("/vehicles/:id", vehicleControllers.edit);
 
 router.get("/booking", bookingControllers.browse);
 router.post("/booking", bookingControllers.add);

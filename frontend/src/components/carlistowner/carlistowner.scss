@@ -1,0 +1,146 @@
+.carsection {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.greencar {
+  border: 4px solid #4cde7daf;
+  .btncarlist:before {
+    background-color: #8ced79;
+  }
+}
+
+.nogreencar {
+  border: 4px solid #9aaec2;
+  .btncarlist {
+    border: 1px solid #c2d3e4;
+  }
+}
+
+.carcard {
+  border-radius: 10px;
+  width: 30vw;
+  margin: 20px;
+  padding: auto;
+  display: flex;
+}
+
+.carcardinside {
+  margin: auto;
+  width: 100%;
+  padding: 5px;
+}
+
+.carimginfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.logocar {
+  height: 50px;
+}
+.carimg {
+  height: 17vh;
+  border-radius: 50%;
+}
+
+.carinfoitems {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.greenvehicle {
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-style: italic;
+  color: rgb(78, 71, 71);
+}
+
+.btnpart {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+// .btncarlist {
+//   width: 40%;
+//   font-size: 1.2rem;
+// }
+.btncarlist {
+  background-color: transparent;
+  border: 1px solid #9aaec2;
+  box-sizing: border-box;
+  color: rgb(41, 38, 38);
+  font-family: "Avenir Next LT W01 Bold", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.btncarlist:hover,
+.btncarlist:active {
+  outline: 0;
+}
+
+.btncarlist:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btncarlist:before {
+  background-color: #9aaec2;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.btncarlist:hover:before {
+  background-color: #f3ec9a;
+}
+
+@media (min-width: 768px) {
+  .btncarlist {
+    padding: 16px 32px;
+  }
+}
+
+#covoit:before {
+  background-color: #f3ec9a;
+}
+
+#covoit:hover:before {
+  background-color: #9aaec2;
+}
+
+#modifinfo:before {
+  background-color: rgb(167, 215, 220);
+}
+
+#makeunavailable:before {
+  background-color: rgb(35, 194, 35);
+}
+
+#makeavailable:before {
+  background-color: rgb(240, 92, 92);
+}
+
+#available {
+  color: rgb(35, 194, 35);
+  font-size: 1.5rem;
+}
+
+#unavailable {
+  color: rgb(240, 92, 92);
+  font-size: 1.5rem;
+}
