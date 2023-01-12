@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.owner
+  models.user
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.owner
+  models.user
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const owner = req.body;
+  const user = req.body;
 
   // TODO validations (length, format...)
 
-  owner.id = parseInt(req.params.id, 10);
+  user.id = parseInt(req.params.id, 10);
 
-  models.owner
-    .update(owner)
+  models.user
+    .update(user)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,14 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const owner = req.body;
+  const user = req.body;
 
   // TODO validations (length, format...)
 
-  models.owner
-    .insert(owner)
+  models.user
+    .insert(user)
     .then(([result]) => {
-      res.location(`/owners/${result.insertId}`).sendStatus(201);
+      res.location(`/users/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.owner
+  models.user
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -82,23 +82,21 @@ const destroy = (req, res) => {
     });
 };
 
-const login = (req, res) => {
-  models.owner
-    .findOwnerByEmail(req.body.email)
-    .then(([result]) => {
-      if (result.length) {
-        const { email, password } = result[0];
-        if (password !== req.body.password) {
-          res.sendStatus(401);
-        } else {
-          res.status(201).send(email);
-        }
+const verifyUser = (req, res) => {
+  const user = req.body;
+  models.user
+    .getbyemailandpassword(user)
+    .then(([users]) => {
+      if (users.length) {
+        [req.user] = users;
+        res.status(200).send(req.user);
       } else {
-        res.sendStatus(404);
+        res.sendStatus(401);
       }
     })
     .catch((err) => {
       console.error(err);
+      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -108,5 +106,5 @@ module.exports = {
   edit,
   add,
   destroy,
-  login,
+  verifyUser,
 };

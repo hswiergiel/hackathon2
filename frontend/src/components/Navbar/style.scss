@@ -1,0 +1,78 @@
+.Logo {
+  width: 10vw;
+  margin-right: 50vw;
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #39b693;
+  font-size: 1em;
+  font-weight: bolder;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(255, 249, 34),
+    rgba(255, 0, 128),
+    rgba(56, 2, 155, 0)
+  );
+  border-image-slice: 1;
+  width: 100%;
+}
+
+.navtitle {
+  cursor: pointer;
+  color: rgb(100, 72, 109);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button-51 {
+  background-color: transparent;
+  border: 1px solid #9aaec2;
+  box-sizing: border-box;
+  color: rgb(41, 38, 38);
+  font-family: "Avenir Next LT W01 Bold", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 24px;
+  padding: 16px 23px;
+  position: relative;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-51:hover,
+.button-51:active {
+  outline: 0;
+}
+
+.button-51:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button-51:before {
+  background-color: #79edc7;
+  content: "";
+  height: calc(100% + 3px);
+  position: absolute;
+  right: -7px;
+  top: -9px;
+  transition: background-color 300ms ease-in;
+  width: 100%;
+  z-index: -1;
+}
+
+.button-51:hover:before {
+  background-color: #f3ec9a;
+}
+
+@media (min-width: 768px) {
+  .button-51 {
+    padding: 16px 32px;
+  }
+}
