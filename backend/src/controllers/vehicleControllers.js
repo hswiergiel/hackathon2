@@ -30,11 +30,7 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const vehicle = req.body;
-
-  // TODO validations (length, format...)
-
   vehicle.id = parseInt(req.params.id, 10);
-
   models.vehicle
     .update(vehicle)
     .then(([result]) => {
