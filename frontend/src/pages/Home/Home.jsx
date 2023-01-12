@@ -1,3 +1,6 @@
+import Navbar from "@components/Navbar/Navbar"
+import RentForm from "@components/RentForm/RentForm";
+import AmazonLocker from "@components/amazonLocker/AmazonLocker";
 import "./home.scss";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import useModal from "../../components/useModal/useModal";
 import Modal from "../../components/Modal/Modal";
 import "react-toastify/dist/ReactToastify.css";
-
+    
 export default function Home() {
   const { isShowing: isLoginFromShowed, toggle: toggleLoginForm } = useModal();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
@@ -40,6 +43,9 @@ export default function Home() {
       });
   };
   return (
+    <Navbar />
+      <RentForm />
+      <AmazonLocker />
     <div className="home">
       <ToastContainer />
       <header className="header-home">
