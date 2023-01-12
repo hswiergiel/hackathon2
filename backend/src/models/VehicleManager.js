@@ -7,7 +7,24 @@ class vehicleManager extends AbstractManager {
 
   insert(vehicle) {
     return this.connection.query(
-      `insert into ${this.table} (kilometer, type, price_per_day, model, is_eco,is_available, owner_id) values (?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (kilometer, type, price_per_day, model, is_eco,is_available, year,imageurl, owner_id) values (?,?,?,?,?,?,?,?,?)`,
+      [
+        vehicle.kilometer,
+        vehicle.type,
+        vehicle.price_per_day,
+        vehicle.model,
+        vehicle.is_eco,
+        vehicle.is_available,
+        vehicle.year,
+        vehicle.imageurl,
+        vehicle.owner_id,
+      ]
+    );
+  }
+
+  update(vehicle) {
+    return this.connection.query(
+      `update ${this.table} set kilometer = ?, type=?, price_per_day=?, model=?, is_eco=?, is_available=?, owner_id=? where id = ?`,
       [
         vehicle.kilometer,
         vehicle.type,
@@ -16,15 +33,8 @@ class vehicleManager extends AbstractManager {
         vehicle.is_eco,
         vehicle.is_available,
         vehicle.owner_id,
+        vehicle.id,
       ]
-    );
-  }
-
-  // a modifier si besoin
-  update(vehicle) {
-    return this.connection.query(
-      `update ${this.table} set title = ? where id = ?`,
-      [vehicle.title, vehicle.id]
     );
   }
 }

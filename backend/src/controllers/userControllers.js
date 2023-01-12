@@ -82,21 +82,23 @@ const destroy = (req, res) => {
     });
 };
 
-const verifyUser = (req, res) => {
-  const user = req.body;
+const login = (req, res) => {
   models.user
-    .getbyemailandpassword(user)
-    .then(([users]) => {
-      if (users.length) {
-        [req.user] = users;
-        res.status(200).send(req.user);
+    .findUserByEmail(req.body.email)
+    .then(([result]) => {
+      if (result.length) {
+        const { password } = result[0];
+        if (password !== req.body.password) {
+          res.sendStatus(401);
+        } else {
+          res.status(201).send(result);
+        }
       } else {
-        res.sendStatus(401);
+        res.sendStatus(404);
       }
     })
     .catch((err) => {
       console.error(err);
-      res.status(500).send("Error retrieving data from database");
     });
 };
 
@@ -106,5 +108,5 @@ module.exports = {
   edit,
   add,
   destroy,
-  verifyUser,
+  login,
 };
