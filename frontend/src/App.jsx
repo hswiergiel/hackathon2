@@ -13,6 +13,7 @@ function App() {
     <LogContextProvider>
       <Router>
         <Navbar />
+
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />

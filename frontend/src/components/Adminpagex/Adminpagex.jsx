@@ -1,12 +1,10 @@
-import { Link } from "react-router-dom";
-
 import "./Adminpagex.scss";
 
 export default function Admin() {
   return (
     <div className="totaladmin">
-      <h1 className="hadmin">Admin Page</h1>
-      <Link to="/">Go back to home page</Link>
+      <h1 className="hadmin">Welcome to the admin page Hervé </h1>
+
       <h2 className="usus">List of Users</h2>
       <table className="tabtab1">
         <thead>
@@ -31,7 +29,9 @@ export default function Admin() {
             </div>
           </tr>
         </thead>
+
         <tbody />
+
       </table>
       <h2 className="usus2">List of Companies</h2>
       <table className="tabtab2">
