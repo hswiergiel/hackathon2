@@ -1,87 +1,64 @@
-.tabtab1 {
-  width: 100%;
-  border-collapse: collapse;
-
-  th,
-  td {
-    padding: 2px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  th {
-    font-weight: bold;
-    padding-left: 2em;
-  }
-}
-.admin-actions {
-  a,
-  button {
-    margin-right: 5px;
-  }
-}
-
-.tabtab2 {
-  width: 100%;
-  border-collapse: collapse;
-
-  th,
-  td {
-    padding: 2px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  th {
-    font-weight: bold;
-    padding-left: 2em;
-  }
-}
-.admin-actions {
-  a,
-  button {
-    margin-right: 10px;
-  }
-}
-.usus {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
-
-.usus2 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
 .totaladmin {
-  height: 85vh;
+  width: 100vw;
+  margin: 0 auto;
+  text-align: center;
+  height: 100vh;
   background-image: linear-gradient(
     45deg,
     rgb(240, 231, 185) 26.8%,
     #a9f1e1 64%
   );
 }
+
 .hadmin {
-  margin-top: 0rem;
+  margin-top: 0;
+  padding-top: 10rem;
+  font-size: 2em;
+  margin-bottom: 5rem;
+  color: black;
 }
-.u1 {
-  display: flex;
-  justify-content: space-around;
-  padding-left: -10em;
+
+.usus {
+  margin-top: 30px;
+  font-size: 1.5em;
 }
+
+.tabtab1,
+.tabtab2 {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  padding-top: 3rem;
+  padding: 8px;
+  text-align: left;
+  vertical-align: 3%;
+}
+
 .inp {
-  margin-left: -7.5em;
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.u1 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .button-12 {
-  padding: 5px 10px;
-  font-size: 19px;
-  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 14px;
+  margin: 8px 1px;
   border: none;
-  background-color: #ebf1f5;
-  color: rgb(0, 0, 0);
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  border-radius: 4px;
   cursor: pointer;
-}
-.iol {
-  margin-right: -3em;
+  min-width: 80px;
 }
