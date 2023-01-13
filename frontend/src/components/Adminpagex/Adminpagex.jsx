@@ -29,6 +29,9 @@ export default function Admin() {
             </div>
           </tr>
         </thead>
+
+        <tbody />
+
       </table>
       <h2 className="usus2">List of Companies</h2>
       <table className="tabtab2">
