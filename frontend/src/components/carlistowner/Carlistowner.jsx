@@ -1,21 +1,20 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext } from "react";
 import axios from "axios";
 import logogreen from "@assets/logogreencar.jpg";
 import LogContext from "../../contexts/LogContext";
 import "./carlistowner.scss";
 
 export default function Carlist() {
-  const [cars, setCars] = useState();
-  const { user } = useContext(LogContext);
+  const { user, cars, setCars } = useContext(LogContext);
 
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles/`)
       .then(({ data }) => {
         const carsowner = [...data];
-        setCars(carsowner.filter((elt) => elt.owner_id === user[0].id));
+        setCars(carsowner.filter((elt) => elt.owner_id === user.id));
       });
-  }, []);
+  }, [cars]);
 
   const makeunavailable = (car) => {
     axios
@@ -79,6 +78,9 @@ export default function Carlist() {
                       <em className="carinfoitems">Type :</em> {car.type}
                     </p>
                     <p>
+                      <em className="carinfoitems">Model :</em> {car.model}
+                    </p>
+                    <p>
                       <em className="carinfoitems">Year of purchase :</em>{" "}
                       {car.year}
                     </p>
@@ -93,7 +95,7 @@ export default function Carlist() {
                     {car.is_available ? (
                       <p>
                         <em className="carinfoitems" id="available">
-                          Véhicule disponible
+                          Available vehicle
                         </em>
                       </p>
                     ) : (
@@ -102,7 +104,7 @@ export default function Carlist() {
                     {!car.is_available ? (
                       <p>
                         <em className="carinfoitems" id="unavailable">
-                          Véhicule indisponible
+                          Unavailable vehicle
                         </em>
                       </p>
                     ) : (

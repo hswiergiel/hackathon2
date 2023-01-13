@@ -2,17 +2,17 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import LogContext from "../../contexts/LogContext";
-import "./carFleetForm.scss";
+import "./caPoolingForm.scss";
 
-export default function CarFleetForm() {
+export default function CarPoolingForm() {
+  const { setHidden2 } = useContext(LogContext);
   const notify = (msg) => toast(msg);
-  const { cars, setCars } = useContext(LogContext);
   const [formRentOut, setFormRentOut] = useState({
     type: "",
     model: "",
     year: "",
     price_per_day: "",
-    is_eco: true,
+    is_eco: false,
     kilometer: "",
     is_available: 1,
     imageurl: "",
@@ -37,19 +37,20 @@ export default function CarFleetForm() {
       .catch(() => {
         console.warn("Ohnoooo!");
       });
-    const newcars = [...cars, formRentOut];
-    setCars(newcars);
   };
 
   return (
-    <div className="rentOutContainer">
+    <div className="rentOutContainer" id="rentOutContainerright">
       <ToastContainer />
-      <h2>Rent out your own vehicule in a few clicks !</h2>
+      <h2>
+        Share a car which is already rent and make an eco-friendly saving money
+        move!
+      </h2>
       <form onSubmit={hSubmit}>
         <input
           name="type"
           type="text"
-          placeholder="Which type (car, motorbike, utility, rocket...) ?"
+          placeholder="Departure"
           onChange={hChangeRentOut}
           value={formRentOut.type}
         />
@@ -57,15 +58,15 @@ export default function CarFleetForm() {
         <input
           name="model"
           type="text"
-          placeholder="Which model ?"
+          placeholder="Arrival"
           onChange={hChangeRentOut}
           value={formRentOut.model}
         />
         <br />
         <input
           name="year"
-          type="number"
-          placeholder="Year ?"
+          type="date"
+          placeholder="Date"
           onChange={hChangeRentOut}
           value={formRentOut.year}
         />
@@ -73,12 +74,12 @@ export default function CarFleetForm() {
         <input
           name="price_per_day"
           type="number"
-          placeholder="price per day ?"
+          placeholder="Shared price per day"
           onChange={hChangeRentOut}
           value={formRentOut.price_per_day}
         />
         <br />
-        <div className="selectTitle">Is your vehicle eco-friendly ?</div>
+        <div className="selectTitle">Do you want an eco-friendly vehicle?</div>
         <select name="is_eco" className="selectYesNo">
           <option value={formRentOut.is_eco} onChange={hChangeRentOut}>
             No
@@ -88,24 +89,15 @@ export default function CarFleetForm() {
           </option>
         </select>
         <br />
-        <input
-          name="kilometer"
-          type="number"
-          placeholder="Kilometer ?"
-          onChange={hChangeRentOut}
-          value={formRentOut.kilometer}
-        />
-        <br />
-        <input
-          name="imageurl"
-          type="url"
-          placeholder="Put the url of the picture of your vehicule"
-          onChange={hChangeRentOut}
-          value={formRentOut.imageurl}
-        />
-        <br />
         <div className="buttonContainer">
-          <button type="submit">Drop off my car</button>
+          <button
+            type="button"
+            onClick={() => {
+              setHidden2("hidden");
+            }}
+          >
+            Show the carpooling I want
+          </button>
         </div>
       </form>
       <br />

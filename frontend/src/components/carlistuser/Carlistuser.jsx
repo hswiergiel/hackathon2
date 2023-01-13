@@ -1,17 +1,17 @@
 import { useEffect, useState, useContext } from "react";
-// import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import logogreen from "@assets/logogreencar.jpg";
 import logocovoit from "@assets/logocovoit.png";
+import { ToastContainer, toast } from "react-toastify";
 import LogContext from "../../contexts/LogContext";
 import useModal from "../useModal/useModal";
 import Modal from "../Modal/Modal";
 import "./carlistuser.scss";
 
-export default function Carlist() {
+export default function Carlistuser() {
   const { currentUser } = useContext(LogContext);
-
   const [cars, setCars] = useState();
+  const notify = (msg) => toast(msg);
   const [carSelected, setCarSelected] = useState({});
   const [bookingForm, setBookingForm] = useState({
     nb_seats: 3,
@@ -20,11 +20,20 @@ export default function Carlist() {
   });
   const [currentBooking, setCurrentBooking] = useState({});
   const { isShowing: isCarShowed, toggle: toggleCarShowed } = useModal();
+  const { hidden, hidden2 } = useContext(LogContext);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles`)
       .then(({ data }) => {
-        setCars(data);
+        const carsavailable = [...data];
+        setCars(
+          carsavailable.filter(
+            (elt) =>
+              elt.is_available === 1 ||
+              elt.model === "MarioMobile" ||
+              elt.model === "Partner"
+          )
+        );
       });
   }, [currentBooking]);
 
@@ -80,6 +89,12 @@ export default function Carlist() {
       [evt.target.name]: parseInt(evt.target.value, 10),
     });
   };
+
+  const messagecovoit = () => {
+    notify(
+      "Your request to carpool has been sent to the driver who will get in touch with you very soon!"
+    );
+  };
   return (
     <section className="carsection">
       {cars &&
@@ -89,69 +104,84 @@ export default function Carlist() {
           )
           .map((car) => {
             return (
-              <div
-                className={car.is_eco ? "carcard green" : "carcard nogreen"}
-                key={car.id}
-              >
-                <div className="carcardinside">
-                  <div className="carimginfo">
-                    <img
-                      className="carimg"
-                      src={car.imageurl}
-                      alt="covoit logo"
-                    />
-                    <div className="carinfo">
-                      {!car.is_available ? (
-                        <img
-                          className="logocar"
-                          src={logocovoit}
-                          alt={car.type}
-                        />
-                      ) : (
-                        ""
-                      )}
-                      {car.is_eco ? (
-                        <img
-                          className="logocar"
-                          src={logogreen}
-                          alt="green logo"
-                        />
-                      ) : (
-                        ""
-                      )}
-                      <p>
-                        <em className="carinfoitems">Type :</em> {car.type}
-                      </p>
-                      <p>
-                        <em className="carinfoitems">Year of purchase :</em>{" "}
-                        {car.year}
-                      </p>
-                      <p>
-                        <em className="carinfoitems">Mileage reader:</em>{" "}
-                        {car.kilometer} kilometers
-                      </p>
-                      <p>
-                        <em className="carinfoitems">Price:</em>{" "}
-                        {car.price_per_day}€ / day
-                      </p>
+              <div id={car.model !== "MarioMobile" ? hidden2 : ""}>
+                <div
+                  className={
+                    car.is_eco ? "carcard greencar" : "carcard nogreencar"
+                  }
+                  key={car.id}
+                  id={car.year < 2015 || car.price_per_day > 160 ? hidden : ""}
+                >
+                  <div className="carcardinside">
+                    <div className="carimginfo">
+                      <img
+                        className="carimg"
+                        src={car.imageurl}
+                        alt="covoit logo"
+                      />
+                      <div className="carinfo">
+                        {!car.is_available ? (
+                          <img
+                            className="logocar"
+                            src={logocovoit}
+                            alt={car.type}
+                          />
+                        ) : (
+                          ""
+                        )}
+                        {car.is_eco ? (
+                          <img
+                            className="logocar"
+                            src={logogreen}
+                            alt="green logo"
+                          />
+                        ) : (
+                          ""
+                        )}
+                        <p>
+                          <em className="carinfoitems">Type :</em> {car.type}
+                        </p>
+                        <p>
+                          <em className="carinfoitems">Model :</em> {car.model}
+                        </p>
+                        <p>
+                          <em className="carinfoitems">Year of purchase :</em>{" "}
+                          {car.year}
+                        </p>
+                        <p>
+                          <em className="carinfoitems">Mileage reader:</em>{" "}
+                          {car.kilometer} kilometers
+                        </p>
+                        <p>
+                          <em className="carinfoitems">Price:</em>{" "}
+                          {car.price_per_day}€ / day
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="btnpart">
-                    <button
-                      type="button"
-                      className="btncarlist"
-                      onClick={(evt) => hCarShow(evt, car)}
-                    >
-                      {car.carpooling
-                        ? "Participer à un covoiturage"
-                        : "Louer ce véhicule"}
-                    </button>
+                    <div className="btnpart">
+                      <button
+                        type="button"
+                        className="btncarlist"
+                        onClick={
+                          car.carpooling
+                            ? () => {
+                                messagecovoit();
+                              }
+                            : (evt) => hCarShow(evt, car)
+                        }
+                      >
+                        {car.carpooling
+                          ? "Participer à un covoiturage"
+                          : "Louer ce véhicule"}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             );
           })}
       <Modal isShowing={isCarShowed} hide={toggleCarShowed}>
+        <ToastContainer />
         <div className="carcardinside">
           <div className="carimginfo">
             <img
@@ -189,13 +219,28 @@ export default function Carlist() {
                 <em className="carinfoitems">Price:</em>{" "}
                 {carSelected.price_per_day}€ / day
               </p>
+              <input
+                name="type"
+                type="text"
+                placeholder="Carpooling: Departure"
+              />
+              <br />
+              <br />
+              <input
+                name="type"
+                type="text"
+                placeholder="Carpooling: Arrival"
+              />
+              <br />
+              <br />
+              <input name="type" type="date" placeholder="Carpooling: Date" />
             </div>
           </div>
           <div className="btnpart">
             {carSelected.is_available ? (
               <form onSubmit={hBooking} className="covoit-form">
                 <div className="covoit">
-                  <h3>Activer option covoiturage ?</h3>
+                  <h3>Carpooling?</h3>
                   <div>
                     <input
                       type="radio"
@@ -222,7 +267,7 @@ export default function Carlist() {
                   key={carSelected.id}
                   onClick={hBooking}
                 >
-                  Louer ce véhicule
+                  Rent this vehicle
                 </button>
               </form>
             ) : (
@@ -235,7 +280,7 @@ export default function Carlist() {
                 id="covoit"
                 key={carSelected.id}
               >
-                Participer à un covoiturage
+                Carpooling in this car
               </button>
             ) : (
               ""
