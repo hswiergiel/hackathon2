@@ -3,7 +3,7 @@ import "./Adminpagex.scss";
 export default function Admin() {
   return (
     <div className="totaladmin">
-      <h1 className="hadmin">Welcome to the admin page Romain </h1>
+      <h1 className="hadmin">Welcome to the admin page Hervé </h1>
 
       <h2 className="usus">List of Users</h2>
       <table className="tabtab1">

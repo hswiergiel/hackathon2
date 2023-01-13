@@ -15,10 +15,29 @@
   padding-top: 10rem;
   font-size: 2em;
   margin-bottom: 5rem;
-  color: black;
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 2em;
+  font-weight: bolder;
+  text-decoration-thickness: 3px;
 }
 
 .usus {
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 2em;
+  font-weight: bolder;
+  text-decoration-thickness: 3px;
+  margin-top: 30px;
+  font-size: 1.5em;
+}
+
+.usus2 {
+  color: white;
+  text-shadow: 2px 2px black;
+  font-size: 2em;
+  font-weight: bolder;
+  text-decoration-thickness: 3px;
   margin-top: 30px;
   font-size: 1.5em;
 }
@@ -39,7 +58,7 @@ th {
 
 .inp {
   width: 80%;
-  padding: 12px 20px;
+  padding: 17px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid #ccc;
