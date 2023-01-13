@@ -56,7 +56,7 @@ export default function Carlistuser() {
                     </p>
                     <p>
                       <em className="carinfoitems">Mileage reader:</em>{" "}
-                      {car.kilometer} kilometers
+                      {car.kilometer} KM
                     </p>
                     <p>
                       <em className="carinfoitems">Price:</em>{" "}
@@ -67,14 +67,14 @@ export default function Carlistuser() {
                 <div className="btnpart">
                   {car.is_available ? (
                     <button type="button" className="btncarlist">
-                      Louer ce véhicule
+                      rent this vehicle
                     </button>
                   ) : (
                     ""
                   )}
                   {!car.is_available ? (
                     <button type="button" className="btncarlist" id="covoit">
-                      Participer à un covoiturage
+                      Participate in a carpool
                     </button>
                   ) : (
                     ""

@@ -6,10 +6,10 @@
   padding: none;
   border-top: 2px solid transparent;
   border-image: linear-gradient(
-    0.25turn,
-    rgba(255, 249, 34),
-    rgba(255, 0, 128),
-    rgba(56, 2, 155, 0)
+    90deg,
+    rgba(130, 235, 187, 1) 0%,
+    rgba(117, 238, 204, 1) 50%,
+    rgba(219, 214, 73, 1) 100%
   );
   border-image-slice: 1;
   margin-top: 3rem;

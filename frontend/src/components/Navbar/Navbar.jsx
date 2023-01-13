@@ -52,7 +52,9 @@ export default function navbar() {
   };
   return (
     <div className="navbar">
-      <img className="Logo" src={logo} alt="" />
+      <a href="/">
+        <img className="Logo" src={logo} alt="" />
+      </a>
       <NavLink to="/" className="nav-links">
         <button className="button-51" type="button">
           Rent a vehicle

@@ -81,7 +81,7 @@ export default function Carlist() {
                     </p>
                     <p>
                       <em className="carinfoitems">Mileage reader:</em>{" "}
-                      {car.kilometer} kilometers
+                      {car.kilometer} KM
                     </p>
                     <p>
                       <em className="carinfoitems">Price:</em>{" "}
@@ -90,7 +90,7 @@ export default function Carlist() {
                     {car.is_available ? (
                       <p>
                         <em className="carinfoitems" id="available">
-                          Véhicule disponible
+                          Vehicle available
                         </em>
                       </p>
                     ) : (
@@ -99,7 +99,7 @@ export default function Carlist() {
                     {!car.is_available ? (
                       <p>
                         <em className="carinfoitems" id="unavailable">
-                          Véhicule indisponible
+                          Vehicle unavailable
                         </em>
                       </p>
                     ) : (
@@ -117,7 +117,7 @@ export default function Carlist() {
                         makeunavailable(car);
                       }}
                     >
-                      Rendre indisponible
+                      Make unavailable
                     </button>
                   ) : (
                     ""
@@ -131,13 +131,13 @@ export default function Carlist() {
                         makeavailable(car);
                       }}
                     >
-                      Rendre disponible
+                      Make available
                     </button>
                   ) : (
                     ""
                   )}
                   <button type="button" className="btncarlist" id="modifinfo">
-                    Modifier les informations
+                    Modify informations
                   </button>
                 </div>
               </div>

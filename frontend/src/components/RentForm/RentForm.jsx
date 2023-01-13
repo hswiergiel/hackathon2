@@ -82,7 +82,7 @@ export default function RentForm() {
           <input
             name="price"
             type="number"
-            placeholder="price ?"
+            placeholder="price per day ?"
             onChange={hChangeRentOut}
             value={formRentOut.price}
           />
@@ -98,7 +98,7 @@ export default function RentForm() {
           <input
             name="kilometer"
             type="number"
-            placeholder="Kilometer ?"
+            placeholder="Kilometers ?"
             onChange={hChangeRentOut}
             value={formRentOut.kilometer}
           />

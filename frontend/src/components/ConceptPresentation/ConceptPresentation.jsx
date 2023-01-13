@@ -12,6 +12,8 @@ import Chrono from "../../assets/clock.svg";
 import Money from "../../assets/money.png";
 import Carpool from "../../assets/carpooling.png";
 import Locker from "../../assets/locker.png";
+import Keys from "../../assets/keys.svg";
+
 import useModal from "../useModal/useModal";
 import Modal from "../Modal/Modal";
 import LogContext from "../../contexts/LogContext";
@@ -98,7 +100,7 @@ export default function ConceptPresentation() {
           <div className="companyBloc3">
             <h3 className="titleCompanyBloc3">Promote your green vehicles</h3>
             <p className="textCompanyBloc3">
-              <em>Ekoko</em> promotes the rental of the most environmentally
+              <em>Ecoco</em> promotes the rental of the most environmentally
               friendly vehicles.
             </p>
             <img
@@ -115,6 +117,7 @@ export default function ConceptPresentation() {
             onClick={toggleLoginForm}
           >
             Login as company
+            <img className="imgKeys" src={Keys} alt="Green Energy" />
           </button>
         </div>
         <h2 className="titleUserContainer">As an individual ⬇</h2>
@@ -149,9 +152,10 @@ export default function ConceptPresentation() {
         <div className="buttonUser">
           <button className="btnUser" type="button" onClick={toggleLoginForm}>
             Login as user
+            <img className="imgKeys" src={Keys} alt="Green Energy" />
           </button>
         </div>
-        <h2 className="titleFidelityProgramm">Our loyalty programm ⬇</h2>
+        {/* <h2 className="titleFidelityProgramm">Our loyalty programm ⬇</h2> */}
         <div className="fidelityProgramm">
           <div className="imgFidelityContainer">
             <img className="imgFidelityProgramm" src={Money} alt="Money" />
@@ -208,7 +212,7 @@ export default function ConceptPresentation() {
               <br /> You'll save time and freedom it's without extra charge for
               you.
               <br />
-              Yes, as a member of the Ekoko family, you have our support, you
+              Yes, as a member of the Ecoco family, you have our support, you
               deserve it.
               <br />
               <button className="btnAmazonLocker" type="button">

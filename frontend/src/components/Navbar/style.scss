@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@300&display=swap");
+
 .Logo {
   width: 10vw;
   margin-right: 50vw;
@@ -12,10 +14,10 @@
   text-align: center;
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(
-    0.25turn,
-    rgba(255, 249, 34),
-    rgba(255, 0, 128),
-    rgba(56, 2, 155, 0)
+    90deg,
+    rgba(130, 235, 187, 1) 0%,
+    rgba(117, 238, 204, 1) 50%,
+    rgba(219, 214, 73, 1) 100%
   );
   border-image-slice: 1;
   width: 100%;
@@ -30,10 +32,12 @@
 
 .button-51 {
   background-color: transparent;
+  text-transform: uppercase;
+  font-weight: bold;
   border: 1px solid #9aaec2;
   box-sizing: border-box;
   color: rgb(41, 38, 38);
-  font-family: "Avenir Next LT W01 Bold", sans-serif;
+  font-family: "Lexend", sans-serif;
   font-size: 13px;
   font-weight: 700;
   line-height: 24px;

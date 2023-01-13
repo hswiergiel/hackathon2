@@ -20,7 +20,7 @@ export default function Footer() {
           <li>Conditions d'utilisation</li>
           <li>Politique de confidentialité</li>
           <li>Mentions légales</li>
-          <li>@ekoko 2023 - tous droits réservés</li>
+          <li>@ecoco 2023 - tous droits réservés</li>
         </ul>
       </div>
     </div>
