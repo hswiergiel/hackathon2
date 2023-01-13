@@ -12,9 +12,9 @@ export default function Carlist() {
       .get(`${import.meta.env.VITE_BACKEND_URL}/vehicles/`)
       .then(({ data }) => {
         const carsowner = [...data];
-        setCars(carsowner.filter((elt) => elt.owner_id === user[0].id));
+        setCars(carsowner.filter((elt) => elt.owner_id === user.id));
       });
-  }, []);
+  }, [cars]);
 
   const makeunavailable = (car) => {
     axios

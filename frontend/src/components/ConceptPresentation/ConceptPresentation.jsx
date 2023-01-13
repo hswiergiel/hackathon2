@@ -23,7 +23,7 @@ export default function ConceptPresentation() {
     useModal();
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const { setLoggedIn, setUser } = useContext(LogContext);
+  const { setLoggedIn, setUser, setCurrentUser } = useContext(LogContext);
 
   const hLoginChange = (evt) => {
     setLoginForm({ ...loginForm, [evt.target.name]: evt.target.value });
@@ -62,6 +62,7 @@ export default function ConceptPresentation() {
       .then((res) => {
         setLoggedIn(true);
         if (res.status === 201) {
+          setCurrentUser(res.data);
           navigate("/user-page");
           // implementer la diff entre admin et owner
         }

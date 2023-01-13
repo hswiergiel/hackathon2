@@ -13,6 +13,7 @@ export function LogContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState({});
   const [hidden, setHidden] = useState("");
   const [hidden2, setHidden2] = useState("");
+  const [user, setUser] = useState("");
   const context = useMemo(
     () => ({
       loggedIn,
@@ -25,6 +26,8 @@ export function LogContextProvider({ children }) {
       setHidden,
       hidden2,
       setHidden2,
+      user,
+      setUser,
     }),
     [
       loggedIn,
@@ -37,6 +40,8 @@ export function LogContextProvider({ children }) {
       setHidden,
       hidden2,
       setHidden2,
+      user,
+      setUser,
     ]
   );
 
